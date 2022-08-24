@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <!-- HEAD -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <link rel="shortcut icon" href="images/icon.png"/>
+        <link rel="apple-touch-icon-precomposed" href="images/icon.png" />
+
+        <link rel="preload" as="image" href="images/Frame148.png">
+        <link rel="preload" as="image" href="images/0_shadow.png">
+        <link rel="preload" as="image" href="images/1_shadow.png">
+        <link rel="preload" as="image" href="images/2_shadow.png">
+        <link rel="preload" as="image" href="images/3_shadow.png">
+
+        <link rel="stylesheet" href="css/styles.css">
+
+        <title>COUNTER MAZE</title>
+
+    </head>
+
+    <!-- BODY -->
+    <body id="game-screen">
+        <!-- TITLE -->
+        <div id="game-title">
+            COUNTER MAZE
+        </div>
+
+        <!-- GAME BOARD -->
+        <div id="game-board">
+            <div id="game-grid" class="grid-row">
+            </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div id="game-controls">
+          <button id="button-restart" class="button" style="float:left;">|<<</button>
+          <a id="game-info"></a>
+          <button id="button-undo" class="button" style="float:right;"><<</button>
+        </div>
+
+        <!-- INSTRUCTIONS -->
+        <div id="game-instructions">
+            Decrement all counters to zero.
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div id="game-copyright">
+            &copy; 2022 Timo Jokitalo, Vesa Timonen
+        </div>
+
+        <div id="debug-text"></div>
+
+        <!-- SCRIPTS -->
+        <script src="js/UI_window.js"></script>
+        <script src="js/UI_move.js"></script>
+        <script src="js/UI_keyboard.js"></script>
+        <script src="js/UI_buttons.js"></script>
+        <script src="js/UI.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

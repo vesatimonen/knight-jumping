@@ -1,0 +1,226 @@
+
+:root {
+    --border_style:  2px solid #202020;
+    --border_radius: 16px;
+}
+
+
+/*** Global default style ***/
+* {
+    /* Prevent text selection */
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none;
+
+    /* Prevent dragging */
+        -webkit-user-drag: none;
+         -khtml-user-drag: none;
+           -moz-user-drag: none;
+             -o-user-drag: none;
+                user-drag: none;
+
+    /* Disable touch zoom */
+             touch-action: pan-y;
+
+    /* Default font */
+              font-family: Courier New, monospace;
+
+    /* Optimize png images */
+          image-rendering: crisp-edges;
+          image-rendering: -moz-crisp-edges;
+          image-rendering: -o-crisp-edges;
+          image-rendering: -webkit-optimize-contrast;
+
+/*     image-rendering: pixelated; */
+}
+
+/*** Game screen ***/
+#game-screen {
+    /* Screen size */
+    width:              calc(100vw - 40px);
+    max-width:          480px;
+    min-width:          320px;
+
+    margin-left:        auto;
+    margin-right:       auto;
+
+    background-color:   #B0DDFF; /* #92D2F2, #B0DDFF*/
+}
+
+/*
+@media screen and (max-width: 520px) {
+    #game-screen {
+        width:          calc(100vw - 20px);
+    }
+}
+*/
+
+
+/*** Game title ***/
+#game-title {
+    margin-top:     10px;
+
+    font-size:      36px;
+    font-weight:    bold;
+
+    text-align:     center;
+}
+
+
+
+
+/*** Game board ***/
+#game-board {
+    margin-top:     10px;
+
+    background:     #67BFEC;
+
+    border:         var(--border_style);
+    border-radius:  var(--border_radius);
+
+    position:       relative;
+
+    /* Disable scroll with touch */
+/*    touch-action:   none; */
+}
+
+.grid-row:after {
+    content:        "";
+    clear:          both;
+
+    display:        block;
+}
+
+.grid-cell {
+    margin:         0;
+    float:          left;
+}
+
+
+.grid-image {
+    margin:         auto;
+
+    /* Scale image always to fill whole div */
+    max-width:      100%;
+    max-height:     100%;
+    width:          auto;
+    height:         100%;
+
+    display:        block;
+}
+
+.frame {
+    position:       absolute;
+    transform:      translate(-50%, -50%);
+
+    /* Disable scroll with touch */
+    touch-action:   none;
+    z-index:        9;
+}
+
+.trail-frame {
+    position:       absolute;
+    transform:      translate(-50%, -50%);
+    opacity:        0.5;
+
+    /* Disable scroll with touch */
+    touch-action:   none;
+}
+
+/*** Game controls ***/
+#game-controls {
+    margin-top:     10px;
+
+    display:        flex;
+}
+
+#game-controls:after {
+    content:        "";
+    clear:          both;
+    display:        block;
+}
+
+.button {
+    /* Behaviour */
+    display:        block;
+
+    /* Appearance */
+    color:          #000000;
+    background:     #67BFEC;
+    border:         var(--border_style);
+    border-radius:  var(--border_radius);
+    outline:        0;
+
+    /* Size */
+    width:          64px;
+    height:         40px;
+    padding:        0;
+
+    /* Text position */
+    font-size:      24px;
+    text-align:     center;
+
+/*    box-shadow:         3px 3px 5px rgb(0,0,0); */
+}
+
+.button:active:enabled {
+/*    box-shadow:         none; */
+    background:     #B0DDFF;
+}
+
+.button:disabled {
+    opacity: 0.3;
+}
+
+
+
+#game-info {
+    font-size:      28px;
+    font-weight:    bold;
+    text-align:     center;
+
+    margin:         auto;
+}
+
+/*** Game instructions ***/
+#game-instructions {
+    margin-top:     10px;
+
+    font-size:      18px;
+    text-align:     center;
+}
+
+/*** Game copyright ***/
+#game-copyright {
+    margin-top:     10px;
+
+    font-size:      12px;
+    text-align:     center;
+}
+
+#debug-text {
+    position: relative;
+    left: 10px;
+}
+
+@keyframes image-appear {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes image-appear-disabled {
+  0%   {opacity: 0;}
+  100% {opacity: 0.6;}
+}
+
+.appear-animate {
+    animation-name:             image-appear;
+    animation-delay:            0s;
+    animation-duration:         1s;
+    animation-timing-function:  ease;
+    animation-direction:        normal;
+    animation-iteration-count:  1;
+}

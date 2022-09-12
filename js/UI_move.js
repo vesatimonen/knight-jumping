@@ -117,32 +117,11 @@ function uiMoveContinue(event) {
 
 
         /* Check if deltaX, deltaY possible */
-/*
-        move = uiMoveDirection(0, 0, deltaX, 0);
+        move = uiMoveDirection(0, 0, deltaX, deltaY);
         if (game.isLegalMove(move) == false) {
             deltaX = 0;
-        }
-        move = uiMoveDirection(0, 0, 0, deltaY);
-        if (game.isLegalMove(move) == false) {
             deltaY = 0;
         }
-*/
-
-        /* Check cursor grid limits */
-/*
-        if (deltaX > 2*gameGridCellSize) {
-            deltaX = 2*gameGridCellSize;
-        }
-        if (deltaX < -2*gameGridCellSize) {
-            deltaX = -2*gameGridCellSize;
-        }
-        if (deltaY > 2*gameGridCellSize) {
-            deltaY = 2*gameGridCellSize;
-        }
-        if (deltaY < -2*gameGridCellSize) {
-            deltaY = -2*gameGridCellSize;
-        }
-*/
 
         /* Snap to move direction */
         let cursorX = cursorStartX + deltaX;

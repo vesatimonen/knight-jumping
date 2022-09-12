@@ -169,8 +169,9 @@ function uiMoveExecute() {
     let move = uiMoveDirection(cursorX, cursorY, cursorStartX, cursorStartY);
 
     /* Check if moved more than half grid cell */
-    if (Math.abs(cursorX - cursorStartX) >= gameGridCellSize/2 ||
-        Math.abs(cursorY - cursorStartY) >= gameGridCellSize/2) {
+    let moveThreshold = 1.0;
+    if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * moveThreshold ||
+        Math.abs(cursorY - cursorStartY) > gameGridCellSize * moveThreshold) {
         /* Execute move on game board */
         game.moveExecute(move);
     }

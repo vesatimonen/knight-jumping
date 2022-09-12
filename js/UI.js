@@ -45,8 +45,8 @@ function uiFrameRedraw(board) {
     /* Get DOM element for frame */
     let frameImage = document.getElementById("frame");
     frameImage.src          = "images/Frame148.png";
-    frameImage.style.left   = board.frame.X * gameGridCellSize + gameGridCellSize / 2 + "px";
-    frameImage.style.top    = board.frame.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
+    frameImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
+    frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
 
     for (let i = 0; i < trailFrameCount; i++)  {
         let undoImage = document.getElementById("trail-frame-" + i);
@@ -113,7 +113,7 @@ function uiBoardRedraw(board) {
         }
     }
 
-    /* Redraw frame image */
+    /* Redraw cursor */
     uiFrameRedraw(board);
 
     /* Redraw info */
@@ -161,13 +161,13 @@ function uiBoardSetup(board) {
         }
     }
 
-    /* Create frame image */
+    /* Create cursor image */
     let frameImage = document.createElement("img");
     frameImage.className    = "frame";
     frameImage.id           = "frame";
     frameImage.src          = "";
-    frameImage.style.left   = board.frame.X * gameGridCellSize + gameGridCellSize / 2 + "px";
-    frameImage.style.top    = board.frame.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
+    frameImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
+    frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
     frameImage.style.height = gameGridCellSize * 1.25 + "px";
     gameGrid.appendChild(frameImage);
 
@@ -177,8 +177,8 @@ function uiBoardSetup(board) {
         undoImage.className    = "trail-frame";
         undoImage.id           = "trail-frame-" + i;
         undoImage.src          = "";
-        undoImage.style.left   = board.frame.X * gameGridCellSize + gameGridCellSize / 2 + "px";
-        undoImage.style.top    = board.frame.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
+        undoImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
+        undoImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
         undoImage.style.height = gameGridCellSize * 1.25 + "px";
         gameGrid.appendChild(undoImage);
     }

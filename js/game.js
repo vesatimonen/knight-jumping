@@ -1,3 +1,4 @@
+/* Create and initialize 2D array */
 function array2D(width, height, value) {
     let arr = [];
 
@@ -16,7 +17,7 @@ function array2D(width, height, value) {
     return arr;
 }
 
-
+/* Randomize helpers */
 var randomSeed = 0;
 function randomOwnSeed(seed) {
     randomSeed = seed;
@@ -26,16 +27,16 @@ function randomOwn() {
     return ((randomSeed / 65536) % 32768) / 32768;
 }
 
-
+/* Visible board state */
 class Board {
     constructor() {
         /* Properties */
-        this.width  = undefined;
-        this.height = undefined;
-        this.items  = [[undefined]];
-        this.total  = undefined;
-        this.frame  = {X: undefined,
-                       Y: undefined};
+        this.width   = undefined;
+        this.height  = undefined;
+        this.items   = [[undefined]];
+        this.total   = undefined;
+        this.cursor  = {X: undefined,
+                        Y: undefined};
     }
 
     /* Randomize board (for testing) */
@@ -112,8 +113,8 @@ class Board {
             moves--;
         }
 
-        this.frame.X = startX;
-        this.frame.Y = startY;
+        this.cursor.X = startX;
+        this.cursor.Y = startY;
 
         return true;
     }
@@ -127,12 +128,12 @@ class Board {
                 break;
             }
 
-            this.width   = width;
-            this.height  = height;
-            this.items   = array2D(width, height, 0);
-            this.total   = 0;
-            this.frame.X = 0;
-            this.frame.Y = 0;
+            this.width    = width;
+            this.height   = height;
+            this.items    = array2D(width, height, 0);
+            this.total    = 0;
+            this.cursor.X = 0;
+            this.cursor.Y = 0;
 
             for (let i = 0; i < this.width * this.height - tryCount/4; i++) {
                 let x = Math.floor(randomOwn() * this.width);
@@ -157,6 +158,7 @@ class Board {
     }
 }
 
+/* Game state */
 class Game {
     constructor() {
         /* Game board */
@@ -188,20 +190,20 @@ class Game {
     convertMoveToPlace(move) {
         switch (move) {
             case "up-right":
-                return {X: this.board.frame.X,
-                        Y: this.board.frame.Y - 1};
+                return {X: this.board.cursor.X,
+                        Y: this.board.cursor.Y - 1};
                 break;
             case "right-down":
-                return {X: this.board.frame.X + 1,
-                        Y: this.board.frame.Y};
+                return {X: this.board.cursor.X + 1,
+                        Y: this.board.cursor.Y};
                 break;
             case "down-left":
-                return {X: this.board.frame.X,
-                        Y: this.board.frame.Y + 1};
+                return {X: this.board.cursor.X,
+                        Y: this.board.cursor.Y + 1};
                 break;
             case "left-up":
-                return {X: this.board.frame.X - 1,
-                        Y: this.board.frame.Y};
+                return {X: this.board.cursor.X - 1,
+                        Y: this.board.cursor.Y};
                 break;
         }
 
@@ -271,12 +273,12 @@ class Game {
         }
 
         /* Save move */
-        this.moveHistory.push({direction: move, X: this.board.frame.X, Y: this.board.frame.Y});
+        this.moveHistory.push({direction: move, X: this.board.cursor.X, Y: this.board.cursor.Y});
 
-        /* Move frame */
+        /* Move cursor */
         let place = this.convertMoveToPlace(move);
-        this.board.frame.X = place.X;
-        this.board.frame.Y = place.Y;
+        this.board.cursor.X = place.X;
+        this.board.cursor.Y = place.Y;
 
         /* Decrement counter */
         this.board.items[place.X][place.Y]--;
@@ -294,23 +296,23 @@ class Game {
         /* Pop latest move */
         let move = this.moveHistory.pop();
 
-        /* Increment counter under frame */
-        this.board.items[this.board.frame.X][this.board.frame.Y]++;
+        /* Increment counter under cursor */
+        this.board.items[this.board.cursor.X][this.board.cursor.Y]++;
         this.board.total++;
 
-        /* Move frame backwards */
+        /* Move cursor backwards */
         switch (move.direction) {
             case "up-right":
-                this.board.frame.Y++;
+                this.board.cursor.Y++;
                 break;
             case "right-down":
-                this.board.frame.X--;
+                this.board.cursor.X--;
                 break;
             case "down-left":
-                this.board.frame.Y--;
+                this.board.cursor.Y--;
                 break;
             case "left-up":
-                this.board.frame.X++;
+                this.board.cursor.X++;
                 break;
         }
 

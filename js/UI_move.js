@@ -106,20 +106,22 @@ function uiMoveContinue(event) {
         }
 
         /* Check cursor grid limits */
-        if (deltaX > gameGridCellSize) {
-            deltaX = gameGridCellSize;
+/*
+        if (deltaX > 2*gameGridCellSize) {
+            deltaX = 2*gameGridCellSize;
         }
-        if (deltaX < -gameGridCellSize) {
-            deltaX = -gameGridCellSize;
+        if (deltaX < -2*gameGridCellSize) {
+            deltaX = -2*gameGridCellSize;
         }
-        if (deltaY > gameGridCellSize) {
-            deltaY = gameGridCellSize;
+        if (deltaY > 2*gameGridCellSize) {
+            deltaY = 2*gameGridCellSize;
         }
-        if (deltaY < -gameGridCellSize) {
-            deltaY = -gameGridCellSize;
+        if (deltaY < -2*gameGridCellSize) {
+            deltaY = -2*gameGridCellSize;
         }
+*/
 
-        /* Select horizontal or vertical direction */
+        /* Snap to move direction */
         let cursorX = cursorStartX + deltaX;
         let cursorY = cursorStartY + deltaY;
         if (deltaX != 0 && deltaY != 0) {
@@ -145,7 +147,7 @@ function uiMoveContinue(event) {
         }
 
         /* Snap move if threshold exeeced */
-        let snapThreshold = 0.8;
+        let snapThreshold = 1.8;
         if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * snapThreshold ||
             Math.abs(cursorY - cursorStartY) > gameGridCellSize * snapThreshold) {
             /* Mave move on board */

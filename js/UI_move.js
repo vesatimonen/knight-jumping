@@ -129,9 +129,11 @@ function uiMoveContinue(event) {
         let cursorY = cursorStartY + deltaY;
         /* Snap to main direction */
         if (Math.abs(pos.X - cursorStartX) > Math.abs(pos.Y - cursorStartY)) {
-            cursorY = cursorStartY + Math.sign(deltaY) * Math.abs(deltaX / 2);
+//            cursorY = cursorStartY + Math.sign(deltaY) * Math.abs(deltaX / 2);
+            cursorY = cursorStartY + deltaX / 2;
         } else {
-            cursorX = cursorStartX + Math.sign(deltaX) * Math.abs(deltaY / 2);
+//            cursorX = cursorStartX + Math.sign(deltaX) * Math.abs(deltaY / 2);
+            cursorX = cursorStartX - deltaY / 2;
         }
 
 

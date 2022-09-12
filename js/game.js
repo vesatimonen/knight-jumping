@@ -62,21 +62,37 @@ class Board {
                     return false;
                 }
 
-                let direction = Math.floor(randomOwn() * 4);
+                let direction = Math.floor(randomOwn() * 8);
                 switch (direction) {
-                    case 0: /* Up-right */
+                    case 0: /* Up-left */
+                        newX = currX - 1;
+                        newY = currY - 2;
+                        break;
+                    case 1: /* Up-right */
                         newX = currX + 1;
                         newY = currY - 2;
                         break;
-                    case 1: /* Right-down */
+                    case 2: /* Right-up */
+                        newX = currX + 2;
+                        newY = currY - 1;
+                        break;
+                    case 3: /* Right-down */
                         newX = currX + 2;
                         newY = currY + 1;
                         break;
-                    case 2: /* Down-left */
+                    case 4: /* Down-right */
+                        newX = currX + 1;
+                        newY = currY + 2;
+                        break;
+                    case 5: /* Down-left */
                         newX = currX - 1;
                         newY = currY + 2;
                         break;
-                    case 3: /* Left-up */
+                    case 6: /* Left-down */
+                        newX = currX - 2;
+                        newY = currY + 1;
+                        break;
+                    case 7: /* Left-up */
                         newX = currX - 2;
                         newY = currY - 1;
                         break;
@@ -182,17 +198,33 @@ class Game {
     /* Convert move string to XY-place */
     convertMoveToPlace(move) {
         switch (move) {
+            case "up-left":
+                return {X: this.board.cursor.X - 1,
+                        Y: this.board.cursor.Y - 2};
+                break;
             case "up-right":
                 return {X: this.board.cursor.X + 1,
                         Y: this.board.cursor.Y - 2};
+                break;
+            case "right-up":
+                return {X: this.board.cursor.X + 2,
+                        Y: this.board.cursor.Y - 1};
                 break;
             case "right-down":
                 return {X: this.board.cursor.X + 2,
                         Y: this.board.cursor.Y + 1};
                 break;
+            case "down-right":
+                return {X: this.board.cursor.X + 1,
+                        Y: this.board.cursor.Y + 2};
+                break;
             case "down-left":
                 return {X: this.board.cursor.X - 1,
                         Y: this.board.cursor.Y + 2};
+                break;
+            case "left-down":
+                return {X: this.board.cursor.X - 2,
+                        Y: this.board.cursor.Y + 1};
                 break;
             case "left-up":
                 return {X: this.board.cursor.X - 2,
@@ -295,17 +327,33 @@ class Game {
 
         /* Move cursor backwards */
         switch (move.direction) {
+            case "up-left":
+                this.board.cursor.X += 1;
+                this.board.cursor.Y += 2;
+                break;
             case "up-right":
                 this.board.cursor.X -= 1;
                 this.board.cursor.Y += 2;
+                break;
+            case "right-up":
+                this.board.cursor.X -= 2;
+                this.board.cursor.Y += 1;
                 break;
             case "right-down":
                 this.board.cursor.X -= 2;
                 this.board.cursor.Y -= 1;
                 break;
+            case "down-right":
+                this.board.cursor.X -= 1;
+                this.board.cursor.Y -= 2;
+                break;
             case "down-left":
                 this.board.cursor.X += 1;
                 this.board.cursor.Y -= 2;
+                break;
+            case "left-down":
+                this.board.cursor.X += 2;
+                this.board.cursor.Y -= 1;
                 break;
             case "left-up":
                 this.board.cursor.X += 2;

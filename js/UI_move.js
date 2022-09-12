@@ -76,7 +76,7 @@ function uiMovePosition(event) {
             return undefined;
     }
 
-    let rect = gameGrid.getBoundingClientRect()
+    let rect = gameGrid.getBoundingClientRect();
     X -= rect.left;
     Y -= rect.top;
 
@@ -95,8 +95,8 @@ function uiMoveStart(event) {
 
     /* Save move start situation */
     cursor       = event.target;
-    cursorStartX = parseInt(cursor.style.left, 10);
-    cursorStartY = parseInt(cursor.style.top, 10);
+    cursorStartX = parseFloat(cursor.style.left);
+    cursorStartY = parseFloat(cursor.style.top);
 
     return false;
 }
@@ -135,7 +135,7 @@ function uiMoveContinue(event) {
 
 
         /* Start cursor movement if threshold exeeced */
-        let startThreshold = 0.2;
+        let startThreshold = 0.5;
         if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * startThreshold ||
             Math.abs(cursorY - cursorStartY) > gameGridCellSize * startThreshold) {
             /* Move cursor */
@@ -148,15 +148,15 @@ function uiMoveContinue(event) {
         }
 
         /* Snap move if threshold exeeced */
-        let snapThreshold = 1.8;
+        let snapThreshold = 1.7;
         if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * snapThreshold ||
             Math.abs(cursorY - cursorStartY) > gameGridCellSize * snapThreshold) {
             /* Mave move on board */
             uiMoveExecute();
 
             /* Save new cursor start */
-            cursorStartX = parseInt(cursor.style.left, 10);
-            cursorStartY = parseInt(cursor.style.top, 10);
+            cursorStartX = parseFloat(cursor.style.left);
+            cursorStartY = parseFloat(cursor.style.top);
         }
     }
 
@@ -165,8 +165,8 @@ function uiMoveContinue(event) {
 
 function uiMoveExecute() {
     /* Find out move direction */
-    let cursorX = parseInt(cursor.style.left, 10);
-    let cursorY = parseInt(cursor.style.top, 10);
+    let cursorX = parseFloat(cursor.style.left);
+    let cursorY = parseFloat(cursor.style.top);
     let move = uiMoveDirection(cursorStartX, cursorStartY, cursorX, cursorY);
 
     /* Check if moved more than half grid cell */

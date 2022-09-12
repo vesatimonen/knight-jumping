@@ -13,16 +13,16 @@ function uiMoveDirection(newX, newY, oldX, oldY) {
     if (Math.abs(newX - oldX) > Math.abs(newY - oldY)) {
         /* Horizontal movement */
         if (newX < oldX) {
-            return "left";
+            return "left-up";
         } else {
-            return "right";
+            return "right-down";
         }
     } else {
         /* Vertical movement */
         if (newY < oldY) {
-            return "up";
+            return "up-right";
         } else {
-            return "down";
+            return "down-left";
         }
     }
 

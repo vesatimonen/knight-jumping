@@ -164,7 +164,7 @@ class Game {
 
         /* Game move history */
         this.moveHistory = [];
-        this.moveOptions = ["up", "right", "down", "left"];
+        this.moveOptions = ["up-right", "right-down", "down-left", "left-up"];
 
         /* Game level */
         this.level = 0;
@@ -187,19 +187,19 @@ class Game {
     /* Convert move string to XY-place */
     convertMoveToPlace(move) {
         switch (move) {
-            case "up":
+            case "up-right":
                 return {X: this.board.frame.X,
                         Y: this.board.frame.Y - 1};
                 break;
-            case "right":
+            case "right-down":
                 return {X: this.board.frame.X + 1,
                         Y: this.board.frame.Y};
                 break;
-            case "down":
+            case "down-left":
                 return {X: this.board.frame.X,
                         Y: this.board.frame.Y + 1};
                 break;
-            case "left":
+            case "left-up":
                 return {X: this.board.frame.X - 1,
                         Y: this.board.frame.Y};
                 break;
@@ -300,16 +300,16 @@ class Game {
 
         /* Move frame backwards */
         switch (move.direction) {
-            case "up":
+            case "up-right":
                 this.board.frame.Y++;
                 break;
-            case "right":
+            case "right-down":
                 this.board.frame.X--;
                 break;
-            case "down":
+            case "down-left":
                 this.board.frame.Y--;
                 break;
-            case "left":
+            case "left-up":
                 this.board.frame.X++;
                 break;
         }

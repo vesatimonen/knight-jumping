@@ -64,21 +64,21 @@ class Board {
 
                 let direction = Math.floor(randomOwn() * 4);
                 switch (direction) {
-                    case 0: /* Up */
-                        newX = currX;
-                        newY = currY - 1;
-                        break;
-                    case 1: /* Right */
+                    case 0: /* Up-right */
                         newX = currX + 1;
-                        newY = currY;
+                        newY = currY - 2;
                         break;
-                    case 2: /* Down */
-                        newX = currX;
+                    case 1: /* Right-down */
+                        newX = currX + 2;
                         newY = currY + 1;
                         break;
-                    case 3: /* Left */
+                    case 2: /* Down-left */
                         newX = currX - 1;
-                        newY = currY;
+                        newY = currY + 2;
+                        break;
+                    case 3: /* Left-up */
+                        newX = currX - 2;
+                        newY = currY - 1;
                         break;
                 }
 
@@ -135,13 +135,6 @@ class Board {
             this.cursor.X = 0;
             this.cursor.Y = 0;
 
-            for (let i = 0; i < this.width * this.height - tryCount/4; i++) {
-                let x = Math.floor(randomOwn() * this.width);
-                let y = Math.floor(randomOwn() * this.height);
-
-                this.items[x][y] = 10;
-            }
-
             if (this.randomize(moves) == true) {
                 break;
             }
@@ -190,20 +183,20 @@ class Game {
     convertMoveToPlace(move) {
         switch (move) {
             case "up-right":
-                return {X: this.board.cursor.X,
-                        Y: this.board.cursor.Y - 1};
+                return {X: this.board.cursor.X + 1,
+                        Y: this.board.cursor.Y - 2};
                 break;
             case "right-down":
-                return {X: this.board.cursor.X + 1,
-                        Y: this.board.cursor.Y};
-                break;
-            case "down-left":
-                return {X: this.board.cursor.X,
+                return {X: this.board.cursor.X + 2,
                         Y: this.board.cursor.Y + 1};
                 break;
-            case "left-up":
+            case "down-left":
                 return {X: this.board.cursor.X - 1,
-                        Y: this.board.cursor.Y};
+                        Y: this.board.cursor.Y + 2};
+                break;
+            case "left-up":
+                return {X: this.board.cursor.X - 2,
+                        Y: this.board.cursor.Y - 1};
                 break;
         }
 
@@ -303,16 +296,20 @@ class Game {
         /* Move cursor backwards */
         switch (move.direction) {
             case "up-right":
-                this.board.cursor.Y++;
+                this.board.cursor.X -= 1;
+                this.board.cursor.Y += 2;
                 break;
             case "right-down":
-                this.board.cursor.X--;
+                this.board.cursor.X -= 2;
+                this.board.cursor.Y -= 1;
                 break;
             case "down-left":
-                this.board.cursor.Y--;
+                this.board.cursor.X += 1;
+                this.board.cursor.Y -= 2;
                 break;
             case "left-up":
-                this.board.cursor.X++;
+                this.board.cursor.X += 2;
+                this.board.cursor.Y += 1;
                 break;
         }
 

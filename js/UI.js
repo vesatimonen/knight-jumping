@@ -49,7 +49,7 @@ function uiCursorRedraw(board) {
     frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
 
     for (let i = 0; i < trailCursorCount; i++)  {
-        let undoImage = document.getElementById("trail-frame-" + i);
+        let undoImage = document.getElementById("cursor-trail-" + i);
         let undoMove = game.getHistoryMove(i);
         if (undoMove == undefined) {
             undoImage.src          = "";
@@ -174,8 +174,8 @@ function uiBoardSetup(board) {
     /* Create trail frame images */
     for (let i = 0; i < trailCursorCount; i++)  {
         let undoImage = document.createElement("img");
-        undoImage.className    = "trail-frame";
-        undoImage.id           = "trail-frame-" + i;
+        undoImage.className    = "cursor-trail";
+        undoImage.id           = "cursor-trail-" + i;
         undoImage.src          = "";
         undoImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
         undoImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";

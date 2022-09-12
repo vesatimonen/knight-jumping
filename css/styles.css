@@ -121,7 +121,7 @@
     z-index:        9;
 }
 
-.trail-frame {
+.cursor-trail {
     position:       absolute;
     transform:      translate(-50%, -50%);
     opacity:        0.5;

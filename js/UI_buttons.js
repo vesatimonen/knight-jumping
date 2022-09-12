@@ -11,8 +11,6 @@ function uiUndo() {
         return false;
     }
 
-//levelStart(game.level + 1);
-
     /* Refresh board */
     uiGameRefresh(game);
 
@@ -55,14 +53,14 @@ function uiMouseDown() {
 /*****************************************************************************
  * Register button event handlers
  *****************************************************************************/
+/* UNDO */
 buttonUndo.addEventListener("click", uiUndo);
 
-buttonRestart.addEventListener("click", uiRestart);
-
+/* RESTART */
+buttonRestart.addEventListener("click",      uiRestart);
 buttonRestart.addEventListener("mouseup",    uiMouseUp);
 buttonRestart.addEventListener("mouseleave", uiMouseUp);
 buttonRestart.addEventListener("mousedown",  uiMouseDown);
-
-buttonRestart.addEventListener("touchend",    uiMouseUp);
-buttonRestart.addEventListener("touchstart",  uiMouseDown);
+buttonRestart.addEventListener("touchend",   uiMouseUp);
+buttonRestart.addEventListener("touchstart", uiMouseDown);
 

@@ -1,9 +1,9 @@
-# COUNTER MAZE
+# KNIGHT JUMPING
 
-Counter maze is a tiny multi-challenge puzzle made with HTML, CSS and native JavaScript.
+Knight jumping is a tiny multi-challenge puzzle made with HTML, CSS and native JavaScript.
 
-Target of the puzzle is to decrement all the counters to zero by moving the cursor.
+Target of the puzzle is to decrement all the counters to zero using chess Knight moves.
 
 <img src="images/capture.png" alt="Game example" />
 
-Play online https://vesatimonen.github.io/counter-maze/
+Play online https://vesatimonen.github.io/knight-jumping/

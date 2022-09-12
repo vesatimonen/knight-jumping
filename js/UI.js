@@ -43,10 +43,10 @@ function uiInfoRedraw(game) {
  *****************************************************************************/
 function uiCursorRedraw(board) {
     /* Get DOM element for cursor */
-    let frameImage = document.getElementById("cursor");
-    frameImage.src          = "images/Frame148.png";
-    frameImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
-    frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
+    let cursorImage = document.getElementById("cursor");
+    cursorImage.src          = "images/Frame148.png";
+    cursorImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
+    cursorImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
 
     for (let i = 0; i < trailCursorCount; i++)  {
         let undoImage = document.getElementById("cursor-trail-" + i);
@@ -162,16 +162,16 @@ function uiBoardSetup(board) {
     }
 
     /* Create cursor image */
-    let frameImage = document.createElement("img");
-    frameImage.className    = "cursor";
-    frameImage.id           = "cursor";
-    frameImage.src          = "";
-    frameImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
-    frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
-    frameImage.style.height = gameGridCellSize * 1.25 + "px";
-    gameGrid.appendChild(frameImage);
+    let cursorImage = document.createElement("img");
+    cursorImage.className    = "cursor";
+    cursorImage.id           = "cursor";
+    cursorImage.src          = "";
+    cursorImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
+    cursorImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
+    cursorImage.style.height = gameGridCellSize * 1.25 + "px";
+    gameGrid.appendChild(cursorImage);
 
-    /* Create trail frame images */
+    /* Create cursor trail images */
     for (let i = 0; i < trailCursorCount; i++)  {
         let undoImage = document.createElement("img");
         undoImage.className    = "cursor-trail";

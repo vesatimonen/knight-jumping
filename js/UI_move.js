@@ -1,9 +1,9 @@
 /*****************************************************************************
  * Move variables
  *****************************************************************************/
-var frame       = undefined;
-var frameStartX = undefined;
-var frameStartY = undefined;
+var cursor       = undefined;
+var cursorStartX = undefined;
+var cursorStartY = undefined;
 
 
 /*****************************************************************************
@@ -68,21 +68,21 @@ function uiMovePosition(event) {
  * Move event handlers
  *****************************************************************************/
 function uiMoveStart(event) {
-    /* Check that target is frame */
+    /* Check that target is cursor */
     if (event.target.id != "cursor") {
         return false;
     }
 
     /* Save move start situation */
-    frame        = event.target;
-    frameStartX = parseInt(frame.style.left, 10);
-    frameStartY = parseInt(frame.style.top, 10);
+    cursor        = event.target;
+    cursorStartX = parseInt(cursor.style.left, 10);
+    cursorStartY = parseInt(cursor.style.top, 10);
 
     return false;
 }
 
 function uiMoveContinue(event) {
-    if (frame != undefined) {
+    if (cursor != undefined) {
         let move = "";
 
         /* Get event position */
@@ -92,8 +92,8 @@ function uiMoveContinue(event) {
         }
 
         /* Calculate move delta */
-        let deltaX = pos.X - frameStartX;
-        let deltaY = pos.Y - frameStartY;
+        let deltaX = pos.X - cursorStartX;
+        let deltaY = pos.Y - cursorStartY;
 
         /* Check if deltaX, deltaY possible */
         move = uiMoveDirection(deltaX, 0, 0, 0);
@@ -105,7 +105,7 @@ function uiMoveContinue(event) {
             deltaY = 0;
         }
 
-        /* Check frame grid limits */
+        /* Check cursor grid limits */
         if (deltaX > gameGridCellSize) {
             deltaX = gameGridCellSize;
         }
@@ -120,40 +120,40 @@ function uiMoveContinue(event) {
         }
 
         /* Select horizontal or vertical direction */
-        let frameX = frameStartX + deltaX;
-        let frameY = frameStartY + deltaY;
+        let cursorX = cursorStartX + deltaX;
+        let cursorY = cursorStartY + deltaY;
         if (deltaX != 0 && deltaY != 0) {
             /* Snap to main direction */
-            if (Math.abs(pos.X - frameStartX) > Math.abs(pos.Y - frameStartY)) {
-                frameY = frameStartY;
+            if (Math.abs(pos.X - cursorStartX) > Math.abs(pos.Y - cursorStartY)) {
+                cursorY = cursorStartY;
             } else {
-                frameX = frameStartX;
+                cursorX = cursorStartX;
             }
         }
 
-        /* Start frame movement if threshold exeeced */
+        /* Start cursor movement if threshold exeeced */
         let startThreshold = 0.2;
-        if (Math.abs(frameX - frameStartX) > gameGridCellSize * startThreshold ||
-            Math.abs(frameY - frameStartY) > gameGridCellSize * startThreshold) {
-            /* Move frame */
-            frame.style.left = frameX + "px";
-            frame.style.top  = frameY + "px";
+        if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * startThreshold ||
+            Math.abs(cursorY - cursorStartY) > gameGridCellSize * startThreshold) {
+            /* Move cursor */
+            cursor.style.left = cursorX + "px";
+            cursor.style.top  = cursorY + "px";
         } else {
-            /* Keep frame in center */
-            frame.style.left = frameStartX + "px";
-            frame.style.top  = frameStartY + "px";
+            /* Keep cursor in center */
+            cursor.style.left = cursorStartX + "px";
+            cursor.style.top  = cursorStartY + "px";
         }
 
         /* Snap move if threshold exeeced */
         let snapThreshold = 0.8;
-        if (Math.abs(frameX - frameStartX) > gameGridCellSize * snapThreshold ||
-            Math.abs(frameY - frameStartY) > gameGridCellSize * snapThreshold) {
+        if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * snapThreshold ||
+            Math.abs(cursorY - cursorStartY) > gameGridCellSize * snapThreshold) {
             /* Mave move on board */
             uiMoveExecute();
 
-            /* Save new frame start */
-            frameStartX = parseInt(frame.style.left, 10);
-            frameStartY = parseInt(frame.style.top, 10);
+            /* Save new cursor start */
+            cursorStartX = parseInt(cursor.style.left, 10);
+            cursorStartY = parseInt(cursor.style.top, 10);
         }
     }
 
@@ -162,13 +162,13 @@ function uiMoveContinue(event) {
 
 function uiMoveExecute() {
     /* Find out move direction */
-    let frameX = parseInt(frame.style.left, 10);
-    let frameY = parseInt(frame.style.top, 10);
-    let move = uiMoveDirection(frameX, frameY, frameStartX, frameStartY);
+    let cursorX = parseInt(cursor.style.left, 10);
+    let cursorY = parseInt(cursor.style.top, 10);
+    let move = uiMoveDirection(cursorX, cursorY, cursorStartX, cursorStartY);
 
     /* Check if moved more than half grid cell */
-    if (Math.abs(frameX - frameStartX) >= gameGridCellSize/2 ||
-        Math.abs(frameY - frameStartY) >= gameGridCellSize/2) {
+    if (Math.abs(cursorX - cursorStartX) >= gameGridCellSize/2 ||
+        Math.abs(cursorY - cursorStartY) >= gameGridCellSize/2) {
         /* Execute move on game board */
         game.moveExecute(move);
     }
@@ -180,15 +180,15 @@ function uiMoveExecute() {
 }
 
 function uiMoveEnd(event) {
-    if (frame != undefined) {
+    if (cursor != undefined) {
         /* Execute move */
         uiMoveExecute();
     }
 
     /* End move */
-    frame       = undefined;
-    frameStartX = undefined;
-    frameStartY = undefined;
+    cursor       = undefined;
+    cursorStartX = undefined;
+    cursorStartY = undefined;
 
     return false;
 }
@@ -198,9 +198,9 @@ function uiMoveCancel(event) {
     uiGameRefresh(game);
 
     /* End move */
-    frame       = undefined;
-    frameStartX = undefined;
-    frameStartY = undefined;
+    cursor       = undefined;
+    cursorStartX = undefined;
+    cursorStartY = undefined;
 
     return false;
 }

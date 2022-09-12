@@ -74,7 +74,7 @@ function uiMoveStart(event) {
     }
 
     /* Save move start situation */
-    cursor        = event.target;
+    cursor       = event.target;
     cursorStartX = parseInt(cursor.style.left, 10);
     cursorStartY = parseInt(cursor.style.top, 10);
 
@@ -95,7 +95,9 @@ function uiMoveContinue(event) {
         let deltaX = pos.X - cursorStartX;
         let deltaY = pos.Y - cursorStartY;
 
+
         /* Check if deltaX, deltaY possible */
+/*
         move = uiMoveDirection(deltaX, 0, 0, 0);
         if (game.isLegalMove(move) == false) {
             deltaX = 0;
@@ -104,6 +106,7 @@ function uiMoveContinue(event) {
         if (game.isLegalMove(move) == false) {
             deltaY = 0;
         }
+*/
 
         /* Check cursor grid limits */
 /*
@@ -124,14 +127,13 @@ function uiMoveContinue(event) {
         /* Snap to move direction */
         let cursorX = cursorStartX + deltaX;
         let cursorY = cursorStartY + deltaY;
-        if (deltaX != 0 && deltaY != 0) {
-            /* Snap to main direction */
-            if (Math.abs(pos.X - cursorStartX) > Math.abs(pos.Y - cursorStartY)) {
-                cursorY = cursorStartY;
-            } else {
-                cursorX = cursorStartX;
-            }
+        /* Snap to main direction */
+        if (Math.abs(pos.X - cursorStartX) > Math.abs(pos.Y - cursorStartY)) {
+            cursorY = cursorStartY + Math.sign(deltaY) * Math.abs(deltaX / 2);
+        } else {
+            cursorX = cursorStartX + Math.sign(deltaX) * Math.abs(deltaY / 2);
         }
+
 
         /* Start cursor movement if threshold exeeced */
         let startThreshold = 0.2;

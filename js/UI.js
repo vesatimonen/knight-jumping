@@ -34,7 +34,7 @@ function uiButtonsRedraw(game) {
  *****************************************************************************/
 function uiInfoRedraw(game) {
     let gameInfo = document.getElementById("game-info");
-    gameInfo.innerHTML = "L" + game.level +
+    gameInfo.innerHTML = "L" + game.level + 1 +
                           " (" + game.moveHistory.length + "/" + (game.moveHistory.length + game.board.total) + ")";
 }
 

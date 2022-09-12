@@ -148,7 +148,7 @@ function uiMoveContinue(event) {
         }
 
         /* Snap move if threshold exeeced */
-        let snapThreshold = 1.7;
+        let snapThreshold = 1.8;
         if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * snapThreshold ||
             Math.abs(cursorY - cursorStartY) > gameGridCellSize * snapThreshold) {
             /* Mave move on board */

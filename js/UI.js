@@ -10,7 +10,7 @@ const gameGrid       = document.getElementById("game-grid");
 var   gameGridWidth = gameGrid.clientWidth;
 var   gameGridCellSize;
 
-const trailFrameCount = 1;
+const trailCursorCount = 1;
 
 /*****************************************************************************
  * Redraw buttons
@@ -39,16 +39,16 @@ function uiInfoRedraw(game) {
 }
 
 /*****************************************************************************
- * Redraw board elements
+ * Redraw cursor
  *****************************************************************************/
-function uiFrameRedraw(board) {
-    /* Get DOM element for frame */
-    let frameImage = document.getElementById("frame");
+function uiCursorRedraw(board) {
+    /* Get DOM element for cursor */
+    let frameImage = document.getElementById("cursor");
     frameImage.src          = "images/Frame148.png";
     frameImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
     frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
 
-    for (let i = 0; i < trailFrameCount; i++)  {
+    for (let i = 0; i < trailCursorCount; i++)  {
         let undoImage = document.getElementById("trail-frame-" + i);
         let undoMove = game.getHistoryMove(i);
         if (undoMove == undefined) {
@@ -114,7 +114,7 @@ function uiBoardRedraw(board) {
     }
 
     /* Redraw cursor */
-    uiFrameRedraw(board);
+    uiCursorRedraw(board);
 
     /* Redraw info */
     uiInfoRedraw(game);
@@ -163,8 +163,8 @@ function uiBoardSetup(board) {
 
     /* Create cursor image */
     let frameImage = document.createElement("img");
-    frameImage.className    = "frame";
-    frameImage.id           = "frame";
+    frameImage.className    = "cursor";
+    frameImage.id           = "cursor";
     frameImage.src          = "";
     frameImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
     frameImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
@@ -172,7 +172,7 @@ function uiBoardSetup(board) {
     gameGrid.appendChild(frameImage);
 
     /* Create trail frame images */
-    for (let i = 0; i < trailFrameCount; i++)  {
+    for (let i = 0; i < trailCursorCount; i++)  {
         let undoImage = document.createElement("img");
         undoImage.className    = "trail-frame";
         undoImage.id           = "trail-frame-" + i;

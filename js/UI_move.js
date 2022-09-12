@@ -69,7 +69,7 @@ function uiMovePosition(event) {
  *****************************************************************************/
 function uiMoveStart(event) {
     /* Check that target is frame */
-    if (event.target.id != "frame") {
+    if (event.target.id != "cursor") {
         return false;
     }
 

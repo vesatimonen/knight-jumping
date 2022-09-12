@@ -9,20 +9,40 @@ var cursorStartY = undefined;
 /*****************************************************************************
  * Move helpers
  *****************************************************************************/
-function uiMoveDirection(newX, newY, oldX, oldY) {
+function uiMoveDirection(oldX, oldY, newX, newY) {
     if (Math.abs(newX - oldX) > Math.abs(newY - oldY)) {
-        /* Horizontal movement */
+        /* Horizontal movement (left<->right) */
         if (newX < oldX) {
-            return "left-up";
+            /* Left */
+            if (newY < oldY) {
+                return "left-up";
+            } else {
+                return "left-down";
+            }
         } else {
-            return "right-down";
+            /* Right */
+            if (newY < oldY) {
+                return "right-up";
+            } else {
+                return "right-down";
+            }
         }
     } else {
-        /* Vertical movement */
+        /* Vertical movement (up<->down) */
         if (newY < oldY) {
-            return "up-right";
+            /* Up */
+            if (newX < oldX) {
+                return "up-left";
+            } else {
+                return "up-right";
+            }
         } else {
-            return "down-left";
+            /* Down */
+            if (newX < oldX) {
+                return "down-left";
+            } else {
+                return "down-right";
+            }
         }
     }
 
@@ -98,11 +118,11 @@ function uiMoveContinue(event) {
 
         /* Check if deltaX, deltaY possible */
 /*
-        move = uiMoveDirection(deltaX, 0, 0, 0);
+        move = uiMoveDirection(0, 0, deltaX, 0);
         if (game.isLegalMove(move) == false) {
             deltaX = 0;
         }
-        move = uiMoveDirection(0, deltaY, 0, 0);
+        move = uiMoveDirection(0, 0, 0, deltaY);
         if (game.isLegalMove(move) == false) {
             deltaY = 0;
         }
@@ -129,11 +149,9 @@ function uiMoveContinue(event) {
         let cursorY = cursorStartY + deltaY;
         /* Snap to main direction */
         if (Math.abs(pos.X - cursorStartX) > Math.abs(pos.Y - cursorStartY)) {
-//            cursorY = cursorStartY + Math.sign(deltaY) * Math.abs(deltaX / 2);
-            cursorY = cursorStartY + deltaX / 2;
+            cursorY = cursorStartY + Math.sign(deltaY) * Math.abs(deltaX / 2);
         } else {
-//            cursorX = cursorStartX + Math.sign(deltaX) * Math.abs(deltaY / 2);
-            cursorX = cursorStartX - deltaY / 2;
+            cursorX = cursorStartX + Math.sign(deltaX) * Math.abs(deltaY / 2);
         }
 
 
@@ -170,7 +188,7 @@ function uiMoveExecute() {
     /* Find out move direction */
     let cursorX = parseInt(cursor.style.left, 10);
     let cursorY = parseInt(cursor.style.top, 10);
-    let move = uiMoveDirection(cursorX, cursorY, cursorStartX, cursorStartY);
+    let move = uiMoveDirection(cursorStartX, cursorStartY, cursorX, cursorY);
 
     /* Check if moved more than half grid cell */
     let moveThreshold = 1.0;

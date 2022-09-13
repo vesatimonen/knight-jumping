@@ -44,7 +44,7 @@ function uiInfoRedraw(game) {
 function uiCursorRedraw(board) {
     /* Get DOM element for cursor */
     let cursorImage = document.getElementById("cursor");
-    cursorImage.src          = "images/Frame148.png";
+    cursorImage.src          = "images/knight148.png";
     cursorImage.style.left   = board.cursor.X * gameGridCellSize + gameGridCellSize / 2 + "px";
     cursorImage.style.top    = board.cursor.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
 
@@ -54,7 +54,7 @@ function uiCursorRedraw(board) {
         if (undoMove == undefined) {
             undoImage.src          = "";
         } else {
-            undoImage.src           = "images/Frame148.png";
+            undoImage.src           = "images/knight148.png";
             undoImage.style.left    = undoMove.X * gameGridCellSize + gameGridCellSize / 2 + "px";
             undoImage.style.top     = undoMove.Y * gameGridCellSize + gameGridCellSize / 2 + "px";
 //            undoImage.style.height  = gameGridCellSize * Math.pow(0.7, i) + "px";

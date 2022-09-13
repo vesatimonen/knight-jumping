@@ -135,7 +135,7 @@ function uiMoveContinue(event) {
 
 
         /* Start cursor movement if threshold exeeced */
-        let startThreshold = 0.5;
+        let startThreshold = 0.2;
         if (Math.abs(cursorX - cursorStartX) > gameGridCellSize * startThreshold ||
             Math.abs(cursorY - cursorStartY) > gameGridCellSize * startThreshold) {
             /* Move cursor */

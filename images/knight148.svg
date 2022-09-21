@@ -70,7 +70,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.4113124"
-     inkscape:cx="41.91935"
+     inkscape:cx="16.122827"
      inkscape:cy="132.20718"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -78,7 +78,7 @@
      inkscape:window-width="1827"
      inkscape:window-height="1326"
      inkscape:window-x="697"
-     inkscape:window-y="75"
+     inkscape:window-y="47"
      inkscape:window-maximized="0"
      inkscape:document-rotation="0"
      inkscape:showpageshadow="2"
@@ -101,21 +101,10 @@
      id="layer1"
      transform="translate(7.2382861,-924.54768)"
      style="display:inline">
-    <rect
-       style="display:inline;opacity:0.8;fill:none;fill-opacity:0.99;stroke:#146d9a;stroke-width:7;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.99;filter:url(#filter6539)"
-       id="rect2816"
-       width="117.9469"
-       height="117.9469"
-       x="17.123987"
-       y="949.28772"
-       rx="15"
-       ry="15"
-       inkscape:export-filename="C:\OWN\Bacteria\Piece.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
     <path
        id="path3197"
        style="display:inline;opacity:0.8;fill:none;fill-opacity:0.0989761;stroke:#146d9b;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.996633;filter:url(#filter6539)"
-       d="m 80.051366,997.3343 c 0.425168,5.3997 -2.933658,11.8622 -14.625773,15.476 -8.800973,4.1242 -11.266947,15.4762 -15.816243,15.9864 -0.610459,-0.8618 -5.112109,-0.4038 0.20419,-6.8565 -5.249769,6.3753 -12.432561,0.7425 -11.088486,-4.8781 0.680268,-7.483 9.353692,-14.1581 10.03396,-19.7278 -2.721073,-7.27037 6.122417,-13.4353 6.122417,-13.4353 l 0.170067,-11.90471 10.884296,6.12242 5.782283,-6.80269 4.421745,9.3537 c 34.013428,-6.46256 36.011718,48.55418 37.499798,64.45538 l -53.996309,0.085 c -2.976175,-12.3297 17.942082,-19.4726 15.98631,-37.4997 M 65.935794,978.11671 55.5617,983.55886" />
+       d="m 80.051366,997.3343 c 0.425168,5.3997 -2.933658,11.8622 -14.625773,15.476 -8.800973,4.1242 -11.266947,15.4762 -15.816243,15.9864 -0.610459,-0.8618 -5.112109,-0.4038 0.20419,-6.8565 -5.249769,6.3753 -12.432561,0.7425 -11.088486,-4.8781 0.680268,-7.483 9.353692,-14.1581 10.03396,-19.7278 -2.721073,-7.27037 6.122417,-13.4353 6.122417,-13.4353 l 0.170067,-11.90471 10.884296,6.12242 5.782283,-6.80269 4.421745,9.3537 c 34.013428,-6.46256 36.011718,48.55418 37.499798,64.45538 l -53.996309,0.085 c -2.976175,-12.3297 17.942082,-19.4726 15.98631,-37.4997 M 65.935794,978.11671 55.5617,983.55886"
+       transform="matrix(1.4819722,0,0,1.4819722,-36.503177,-485.7253)" />
   </g>
 </svg>

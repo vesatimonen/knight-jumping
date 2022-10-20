@@ -23,7 +23,7 @@ function levelStart(level) {
     }
 
     /* Save game point */
-    localStorage.setItem("game-level", JSON.stringify(game.level));
+    localStorage.setItem("knight-jumping/game-level", JSON.stringify(game.level));
 
     /* Setup board */
     uiBoardSetup(game.board);
@@ -75,7 +75,7 @@ var game = new Game();
 /*****************************************************************************
  * Start game from save point
  *****************************************************************************/
-level = JSON.parse(localStorage.getItem("game-level"));
+level = JSON.parse(localStorage.getItem("knight-jumping/game-level"));
 if (level > 0) {
     levelStart(level);
 } else {
